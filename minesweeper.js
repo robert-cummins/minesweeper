@@ -2,27 +2,36 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: [{ row: 0, col: 0, isMine: true, hidden: true },
-          { row: 0, col: 1, isMine: true, hidden: true }, 
-          { row: 0, col: 2, isMine: false, hidden: true },
-          { row: 1, col: 0, isMine: false, hidden: true },
-          { row: 1, col: 1, isMine: false, hidden: true },
-          { row: 1, col: 2, isMine: false, hidden: true },
-          { row: 2, col: 0, isMine: false, hidden: true },
-          { row: 2, col: 1, isMine: false, hidden: true },
-          { row: 2, col: 2, isMine: false, hidden: true }]
+   cells: []
  } 
+var reset = document.querySelector('.reset');
 
- document.addEventListener('click', checkForWin);
- document.addEventListener('contextmenu', checkForWin);
+
+document.addEventListener('click', checkForWin);
+document.addEventListener('contextmenu', checkForWin);
+reset.addEventListener('click', function () {
+  location.reload();
+});
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
+  generateBoard(board);
+  
   for (i = 0; i < board.cells.length; i++){
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
   }
 
+  
   lib.initBoard()
+}
+
+//Generate Board
+function generateBoard(obj) {
+  for (i = 0; i < 6; i++){
+    for (y = 0; y < 6; y++){
+      obj.cells.push({ row: i, col: y, isMine: (Math.random() > 0.9), hidden: true });
+    }
+  }
 }
 
 // Define this function to look for a win condition:
