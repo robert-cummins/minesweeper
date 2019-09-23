@@ -8,6 +8,8 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background-image: url(images/background.png);
+  background-size: 100%;
 }
 
 #message, #notes {
@@ -48,13 +50,21 @@ div.mine, div.mine:hover {
 }
 
 div.hidden {
-  background: #eee;
+  background: rgba(238, 238, 238, 0.555);
 }
 
 div.hidden:hover {
-  background: #ccc;
+  background: rgba(204, 204, 204, 0.514);
 }
 
 div.marked, div.marked:hover {
   background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+}
+
+.reset{
+  margin-top: 20px;
+  width: 10%;
+  height: 10%;
+  border-radius: 25%;
+  font-size: 18px;
 }

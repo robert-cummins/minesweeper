@@ -5,13 +5,26 @@ var board = {
    cells: []
  } 
 var reset = document.querySelector('.reset');
+var explosion = new Audio('sounds/explosion.wav');
+var victory = new Audio('sounds/victory.wav');
+var select = new Audio('sounds/select.wav');
+var flag = new Audio('sounds/flag.wav');
 
 
-document.addEventListener('click', checkForWin);
-document.addEventListener('contextmenu', checkForWin);
+
+
+document.addEventListener('click', function () {
+  checkForWin();
+  select.play();
+});
+document.addEventListener('contextmenu', function () {
+  checkForWin();
+  flag.play();
+});
 reset.addEventListener('click', function () {
   location.reload();
 });
+
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
@@ -50,6 +63,7 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   lib.displayMessage('You win!')
+  victory.play();
 }
 
 
